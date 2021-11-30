@@ -1,1 +1,44 @@
+<!DOCTYPE html>
 <html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Job Search</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+ </head>
+ <body>
+  <h1>Job Search Application</h1>
+  <form id="searchField">
+   <fieldset>
+    <legend>Search Parameters:</legend>
+    <label for="description" class="noMargin">Job Description:</label>
+    <input type="text" name="description" id="description">
+    <label for="location">Location:</label>
+    <input type="text" name="location" id="location">
+    <label for="distance">Distance:</label>
+    <select name="distance" id="distance">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    <label for="results">Number of Results:</label>
+    <select name="results" id="results">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <input type="submit" id="submitSearch" value="Search" style="margin-left:10px;">
+   </fieldset> 
+   <div>
+   <div id="result1">
+   <div>
+   <div id="result2">
+   <div>
+   <div id="result3">
+   <div>
+   <div id="result4">
+   <div>
+   <div id="result5"> 
+ </body>
+ <script src="getData.js"></script>
+</html>
