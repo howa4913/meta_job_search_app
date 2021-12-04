@@ -1,3 +1,4 @@
+//global variable to hold URL for microservice
 var serviceURL = 'https://aggregate-job-scraper.herokuapp.com/search/'
 
 
@@ -15,6 +16,7 @@ function callService(){
     req.addEventListener("load", function(){
       clearResults();
       var data = JSON.parse(req.responseText);
+      // create a list of data for each result to be displayed
       for(var i = 0; i < maxResults; i++){
         createNewList(polishContent(data, i));
       }
