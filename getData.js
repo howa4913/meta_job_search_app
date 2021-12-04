@@ -16,22 +16,13 @@ function callService(){
     
     req.addEventListener("load", function(){
       var data = JSON.parse(req.responseText);
-      displayJobs(1, data.jobs[0].title, data.jobs[0].updated_at, data.jobs[0].absolute_url);
-      displayJobs(2, data.jobs[1].title, data.jobs[1].updated_at, data.jobs[1].absolute_url);
-      displayJobs(3, data.jobs[2].title, data.jobs[2].updated_at, data.jobs[2].absolute_url);
+      for(var i = 0; i < maxResults; i++){
+        createNewList(polishContent(data, i));
+      }
     })
     req.send(null);
     event.preventDefault();
     })
-}
-
-
-function createNewList(params){
-  var list = document.createElement('ul');
-  document.getElementById('resultSection').appendChild(list);
-  list.append(createBulletPt('Title: ', params[0]));
-  list.append(createBulletPt('Posted Date: ', parmas[1]));
-  list.append(createBulletPt('URL: ', params[2]));
 }
 
 function createBulletPt(header, val){
@@ -40,7 +31,27 @@ function createBulletPt(header, val){
   return bullet
 }
 
+function createNewList(params){
+  var list = document.createElement('ul');
+  document.getElementById('resultSection').appendChild(list);
+  list.append(createBulletPt('Title: ', params[0]));
+  list.append(createBulletPt('Posted Date: ', params[1]));
+  list.append(createBulletPt('URL: ', params[2]));
+}
 
+function polishContent(data, resultNumber){
+  var jobTitle = data.jobs[resultNumber].title;
+  var jobDate = data.jobs[resultNumber].updated_at;
+  var jobUrl = data.jobs[resultNumber].absolute_url;
+  return [jobTitle, jobDate, jobUrl];
+}
+
+
+
+
+
+
+/*
 function displayJobs(listing, val1, val2, val3){
   var section = document.getElementById('result' + listing);
   var list = document.createElement('ul');
@@ -55,7 +66,7 @@ function displayJobs(listing, val1, val2, val3){
   section.appendChild(bullet2);
   section.appendChild(bullet3);
 }
-
+*/
 
 document.addEventListener("DOMContentLoaded", function(){
   callService()
